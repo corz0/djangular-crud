@@ -1,0 +1,24 @@
+<mat-card>
+    <ng-template tdLoading="articulos.list"></ng-template>
+    <mat-list dense>
+        <div class="pad" *ngIf="articulos.length === 0" layout="row" layout-align="center">
+            <h3>hubo un error. No hay articulos disponibles en este momento</h3>
+        </div>
+
+        <ng-template  ngFor let-articulo [ngForOf]=articulos let-last="last">
+            <mat-list-item>
+                <mat-icon matListAvatar>storage</mat-icon>
+                <h3 matLine>ID: {{articulo.id}}</h3>
+                <h3 matLine>Deposito: {{articulo.deposito}}</h3>
+                <h3 matLine>Color: {{articulo.color}}</h3>
+                <h3 matLine>Cantidad: {{articulo.cantidad}}</h3>
+                <h3 matLine>{{articulo.descripcion}}</h3>
+                <button mat-icon-button (click)="delete(articulo)"><mat-icon>delete</mat-icon></button>
+            </mat-list-item>
+            <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+        </ng-template>
+        
+    </mat-list>
+</mat-card>
+
+<a mat-fab color="accent" class="mat-fab-bottom-right fixed z3" [routerLink]="['add']"><mat-icon class="">add</mat-icon></a>

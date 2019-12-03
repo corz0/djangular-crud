@@ -1,0 +1,25 @@
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core'
+
+import { MainComponent } from './main/main.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  },
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes, {useHash: true}),
+  ],
+  exports: [
+    RouterModule,
+  ]
+})
+
+export class appRoutes {}
+export const routedComponents: any[] = [
+  MainComponent,
+]

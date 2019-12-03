@@ -1,0 +1,21 @@
+<mat-card>
+    <ng-template tdLoading="depositos.list"></ng-template>
+    <mat-list dense>
+        <div class="pad" *ngIf="depositos.length === 0" layout="row" layout-align="center">
+            <h3>hubo un error. No hay depositos disponibles en este momento</h3>
+        </div>
+
+        <ng-template  ngFor let-deposito [ngForOf]=depositos let-last="last">
+            <mat-list-item>
+                <mat-icon matListAvatar>storage</mat-icon>
+                <h3 matLine>ID: {{deposito.id}}</h3>
+                <h3 matLine>{{deposito.descripcion}}</h3>
+                <button mat-icon-button (click)="delete(depo.id)"><mat-icon>delete</mat-icon></button>
+            </mat-list-item>
+            <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+        </ng-template>
+        
+    </mat-list>
+</mat-card>
+
+<a mat-fab color="accent" class="mat-fab-bottom-right fixed z3" [routerLink]="['add']"><mat-icon class="">add</mat-icon></a>
